@@ -1,34 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
+import { DashboardLayout } from './components/layout/DashboardLayout'
+import { ProtectedRoute } from './components/layout/ProtectedRoute'
+import { Dashboard } from './pages/Dashboard'
+import { LoginPage } from './pages/Login'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Routes>
+        {/* 公开路由 */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* 受保护路由 */}
+        <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          {/* 如果以后有课程详情页: <Route path="/lessons/:id" element={<LessonDetail />} /> */}
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        </Route>
+
+        {/* 404 兜底 */}
+        <Route path="*" element={<div className="p-20 text-center">404 Page Not Found</div>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
