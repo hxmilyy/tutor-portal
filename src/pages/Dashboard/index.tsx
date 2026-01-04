@@ -7,7 +7,7 @@ import { FilterBar } from '../../components/lessons/FilterBar';
 export const Dashboard: React.FC = () => {
   const { fetchLessons, isLoading, getFilteredLessons, selectedMonth } = useLessonStore();
 
-  // 获取分类后的数据
+  // Get categorized data
   const sections = getFilteredLessons();
 
   useEffect(() => {
@@ -16,35 +16,35 @@ export const Dashboard: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* 1. 页面标题区 */}
+      {/* 1. Page Title Area */}
       <header>
-        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">教学日程</h1>
-        <p className="text-slate-500 mt-1">查看并管理您的课程安排</p>
+        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Teaching Schedule</h1>
+        <p className="text-slate-500 mt-1">View and manage your course schedule</p>
       </header>
 
-      {/* 2. 筛选栏集成 
-          sticky top-0: 滚动时固定在顶部
-          z-10: 确保不被卡片遮挡
+      {/* 2. Filter Bar Integration
+          sticky top-0: Fix to top when scrolling
+          z-10: Ensure it is not covered by cards
       */}
       <div className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur-md py-4">
         <FilterBar />
       </div>
 
-      {/* 3. 课程列表区 */}
+      {/* 3. Course List Area */}
       <div className="space-y-12 pb-20">
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* 这里可以放三个 Skeleton 卡片占位 */}
+            {/* Here you can put three Skeleton card placeholders */}
             <div className="h-48 bg-gray-200 animate-pulse rounded-xl" />
             <div className="h-48 bg-gray-200 animate-pulse rounded-xl" />
             <div className="h-48 bg-gray-200 animate-pulse rounded-xl" />
           </div>
         ) : (
           <>
-            <LessonSection title="今日课程" lessons={sections.today} />
-            <LessonSection title="可领取课程" lessons={sections.available} />
-            <LessonSection title="即将到来" lessons={sections.upcoming} />
-            <LessonSection title="历史课程" lessons={sections.historic} />
+            <LessonSection title="today" lessons={sections.today} />
+            <LessonSection title="available" lessons={sections.available} />
+            <LessonSection title="upcoming" lessons={sections.upcoming} />
+            <LessonSection title="historic" lessons={sections.historic} />
           </>
         )}
       </div>
@@ -52,7 +52,7 @@ export const Dashboard: React.FC = () => {
   );
 };
 
-// --- 内部子组件：Section 容器 ---
+// --- Internal Subcomponent: Section Container ---
 
 interface SectionProps {
   title: string;
@@ -80,7 +80,7 @@ const LessonSection: React.FC<SectionProps> = ({ title, lessons, variant = 'defa
         </div>
       ) : (
         <div className="border-2 border-dashed border-gray-200 rounded-xl py-10 text-center">
-          <p className="text-gray-400 text-sm">暂无{title}</p>
+          <p className="text-gray-400 text-sm">No {title}</p>
         </div>
       )}
     </section>

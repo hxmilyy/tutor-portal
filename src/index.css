@@ -70,7 +70,7 @@ button:focus-visible {
 }
 
 @layer base {
-  /* 确保整个渲染树占满全屏 */
+  /* Ensure the entire render tree takes up the full screen */
   :root, body, #root {
     height: 100%;
     width: 100%;
@@ -79,7 +79,7 @@ button:focus-visible {
   }
 
   body {
-    /* 防止移动端横向溢出 */
+    /* Prevent horizontal overflow on mobile */
     overflow-x: hidden;
     @apply bg-gray-50 text-gray-900;
   }

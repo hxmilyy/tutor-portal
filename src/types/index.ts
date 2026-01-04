@@ -4,7 +4,7 @@ export type LessonType = 'Historic' | 'Upcoming' | 'Available' | 'Today';
 
 export interface Lesson {
     id: string;
-    date: string; // ISO 8601 格式，例如 "2025-11-08T10:00:00Z"
+    date: string; // ISO 8601 format，example "2025-11-08T10:00:00Z"
     type: LessonType;
     subject: string;
     students: string[];
@@ -107,7 +107,7 @@ export const mockLessons: Lesson[] = [
 ];
 
 /**
- * 导师/用户信息接口
+ * User information interface
  */
 export interface User {
     id: string;
@@ -117,7 +117,7 @@ export interface User {
 }
 
 /**
- * API 响应包装（可选，如果你想模拟标准的后端返回）
+ * API response wrapper (optional, if you want to simulate a standard backend response)
  */
 export interface ApiResponse<T> {
     data: T;
@@ -126,7 +126,7 @@ export interface ApiResponse<T> {
 }
 
 /**
- * 筛选器状态
+ * Filter state
  */
 export interface FilterState {
     month: string; // "YYYY-MM"

@@ -13,10 +13,10 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
 
   login: async (email: string) => {
-    // 模拟 API 请求延迟
+    // simulate API request delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    // 模拟成功登录后的用户信息
+
+    // simulate successful login user info
     const mockUser: User = {
       id: 'T-001',
       name: 'Sarah Tan',
@@ -25,7 +25,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     };
 
     set({ user: mockUser, isAuthenticated: true });
-    localStorage.setItem('tutor_token', 'mock_token_123'); // 模拟 Token 存储
+    localStorage.setItem('tutor_token', 'mock_token_123'); // simulate token storage
   },
 
   logout: () => {

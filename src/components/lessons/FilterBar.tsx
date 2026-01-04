@@ -1,12 +1,12 @@
 import { addMonths, format, parse, subMonths } from 'date-fns';
-import { zhCN } from 'date-fns/locale'; // 如果需要中文显示
+import { zhCN } from 'date-fns/locale'; // Chinese locale
 import React from 'react';
 import { useLessonStore } from '../../store/useLessonStore';
 
 export const FilterBar: React.FC = () => {
   const { selectedMonth, setMonth } = useLessonStore();
 
-  // 解析当前选中的月份字符串为 Date 对象
+  // Parse the currently selected month string into a Date object
   const currentSafeDate = parse(selectedMonth, 'yyyy-MM', new Date());
 
   const handlePrevMonth = () => {
@@ -25,7 +25,7 @@ export const FilterBar: React.FC = () => {
 
   return (
     <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-8 flex flex-col space-y-4 lg:flex-row md:space-y-0 lg:items-center lg:justify-between gap-4">
-      {/* 月份切换器 */}
+      {/* Month Switcher */}
       <div className="flex items-center space-x-4 justify-between md:justify-start">
         <div className="flex items-center bg-gray-100 rounded-lg p-1">
           <button
@@ -38,7 +38,7 @@ export const FilterBar: React.FC = () => {
           </button>
           
           <div className="px-4 py-1 min-w-[120px] text-center font-bold text-gray-800">
-            {format(currentSafeDate, 'yyyy年 MMMM', { locale: zhCN })}
+            {format(currentSafeDate, 'yyyy MMMM', { locale: zhCN })}
           </div>
 
           <button
@@ -55,18 +55,18 @@ export const FilterBar: React.FC = () => {
           onClick={handleGoToday}
           className="text-sm text-blue-600 font-medium hover:underline"
         >
-          回到本月
+          Back to Today
         </button>
       </div>
 
-      {/* 日期范围占位 (原生 HTML5 date 增强) */}
+      {/* Date range placeholder (native HTML5 date enhancement) */}
       <div className="flex items-center space-x-2 w-full md:w-auto">
-        <span className="text-sm text-gray-500">日期筛选:</span>
+        <span className="text-sm text-gray-500">Date Filter:</span>
         <input 
           type="date" 
           className="flex-1 md:w-40 text-sm border border-gray-300 rounded-md px-2 py-1 focus:ring-2 focus:ring-blue-500 outline-none"
           onChange={(e) => {
-             // 逻辑：如果选了具体日期，可以同步更新 Store 的筛选
+            // Logic: If a specific date is selected, the filter in the Store can be updated synchronously
              console.log(e.target.value);
           }}
         />

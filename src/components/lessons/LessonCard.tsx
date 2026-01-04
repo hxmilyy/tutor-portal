@@ -11,7 +11,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
     const [isTaking, setIsTaking] = useState(false);
     const takeLesson = useLessonStore((state) => state.takeLesson);
 
-    // 根据状态定义颜色方案
+    // define color scheme based on status
     const statusStyles = {
         Completed: {
             border: 'border-l-gray-400',
@@ -35,10 +35,10 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
     const handleTakeClass = async () => {
         setIsTaking(true);
         try {
-            // 模拟当前登录导师为 "Sarah Tan"
+            // simulate current logged-in tutor as "Sarah Tan"
             await takeLesson(lesson.id, "Sarah Tan");
         } catch (error) {
-            alert("领取失败，请稍后重试");
+            alert("Failed to take lesson, please try again later");
         } finally {
             setIsTaking(false);
         }
@@ -47,7 +47,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
     return (
         <div className={`group relative flex flex-col justify-between p-5 rounded-xl border border-gray-200 border-l-4 ${currentStyle.border} ${currentStyle.bg} shadow-sm transition-all hover:shadow-md`}>
 
-            {/* 顶部：科目与标签 */}
+            {/* Top: Subject and Tag */}
             <div className="flex justify-between items-start mb-4">
                 <div>
                     <h3 className="font-bold text-gray-900 text-lg leading-tight group-hover:text-blue-600 transition-colors">
@@ -60,7 +60,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
                 </span>
             </div>
 
-            {/* 中部：时间与学生信息 */}
+            {/* Middle: Time and Student Information */}
             <div className="space-y-3 mb-6">
                 <div className="flex items-center text-sm text-gray-600">
                     <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
                 </div>
             </div>
 
-            {/* 底部：动作按钮 */}
+            {/* Bottom: Action Buttons */}
             {lesson.status === 'Available' && (
                 <button
                     onClick={handleTakeClass}
@@ -90,7 +90,7 @@ export const LessonCard: React.FC<LessonCardProps> = ({ lesson }) => {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            处理中...
+                            Processing...
                         </>
                     ) : 'Take Class'}
                 </button>
