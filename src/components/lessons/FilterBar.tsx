@@ -32,7 +32,7 @@ export const FilterBar: React.FC = () => {
             onClick={handlePrevMonth}
             className="p-2 hover:bg-white hover:shadow-sm rounded-md transition-all"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -45,7 +45,7 @@ export const FilterBar: React.FC = () => {
             onClick={handleNextMonth}
             className="p-2 hover:bg-white hover:shadow-sm rounded-md transition-all"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -53,7 +53,7 @@ export const FilterBar: React.FC = () => {
 
         <button 
           onClick={handleGoToday}
-          className="text-sm text-blue-600 font-medium hover:underline"
+          className="text-sm text-white font-medium hover:underline"
         >
           Back to Today
         </button>

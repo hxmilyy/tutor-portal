@@ -50,7 +50,16 @@ export const DashboardLayout = () => {
         {/* Top bar */}
         <header className="h-16 px-8 flex items-center justify-between shrink-0 border-b border-gray-200 bg-white">
           <div className="text-sm text-gray-500">Welcome, {user?.name}</div>
-          <button onClick={handleLogout} className="text-sm text-red-600 hover:font-bold">Logout</button>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLogout();
+            }}
+            className="text-sm !text-gray-500 hover:!text-gray-700 cursor-pointer"
+          >
+            Logout
+          </a>
         </header>
 
         {/* Main content area */}
