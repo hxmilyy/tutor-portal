@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { DashboardLayout } from './components/layout/DashboardLayout'
 import { ProtectedRoute } from './components/layout/ProtectedRoute'
@@ -7,7 +7,7 @@ import { LoginPage } from './pages/Login'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* 公开路由 */}
         <Route path="/login" element={<LoginPage />} />
@@ -22,7 +22,7 @@ function App() {
         {/* 404 兜底 */}
         <Route path="*" element={<div className="p-20 text-center">404 Page Not Found</div>} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
