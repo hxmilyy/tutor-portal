@@ -135,3 +135,10 @@ export interface FilterState {
         end: Date | null;
     };
 }
+
+export interface Task{
+    id: number
+    userId: number
+    todo: String
+    completed: boolean
+}

@@ -4,6 +4,7 @@ import { DashboardLayout } from './components/layout/DashboardLayout'
 import { ProtectedRoute } from './components/layout/ProtectedRoute'
 import { Dashboard } from './pages/Dashboard'
 import { LoginPage } from './pages/Login'
+import { Interview } from './pages/Interview'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           {/* other routes need protect: <Route path="/lessons/:id" element={<LessonDetail />} /> */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Route>
+
+        <Route path='/interview' element={<Interview />}></Route>
 
         {/* 404 */}
         <Route path="*" element={<div className="p-20 text-center">404 Page Not Found</div>} />
